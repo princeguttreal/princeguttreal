@@ -394,3 +394,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 @media(prefers-reduced-motion:reduce){
   .nav,.nav a,.menu-toggle i{transition:none}
 }
+
+
+/* NAV FIX — one breakpoint system, no desktop overflow or conflicting mobile states */
+@media (min-width: 1051px){
+  .site-header{display:flex;justify-content:space-between;align-items:center}
+  .nav{display:flex!important;position:static;opacity:1;visibility:visible;transform:none;flex:0 1 auto;min-width:0}
+}
+@media (max-width: 1050px){
+  .site-header{height:72px;padding:0 5%;position:fixed;display:flex;align-items:center;justify-content:space-between}
+  .menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .nav{
+    display:flex!important;position:absolute;top:calc(100% + 10px);left:4%;right:4%;width:auto;
+    max-height:calc(100vh - 100px);overflow-y:auto;
+    padding:12px;gap:3px;align-items:stretch;flex-direction:column;
+    border:1px solid rgba(255,255,255,.12);border-radius:20px;
+    background:rgba(13,12,12,.98);box-shadow:0 22px 60px rgba(0,0,0,.55);
+    opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);
+    transition:opacity .22s ease,visibility .22s ease,transform .22s ease;
+  }
+  .nav.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)}
+  .nav>a:not(.nav-cta){padding:13px 14px;border-radius:11px;font-size:13px}
+  .nav .nav-cta{margin:7px 0 0;padding:14px;border-radius:12px;text-align:center}
+}
+@media (max-width: 520px){
+  .site-header{padding:0 6%}
+  .brand{font-size:11px;letter-spacing:.1em}
+}
