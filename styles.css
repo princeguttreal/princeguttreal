@@ -149,7 +149,7 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .music-production-head h2{font:600 clamp(42px,6vw,76px)/.98 var(--display);letter-spacing:-.065em;margin:0}
 .music-production-head h2 em{font-style:normal;color:var(--red)}
 .music-production-head>p{max-width:310px;color:var(--muted);font-size:13px;line-height:1.8}
-.music-pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.music-pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .music-price-card{min-height:310px;padding:27px;border:1px solid var(--line);background:linear-gradient(145deg,#151515,#0b0b0b);display:flex;flex-direction:column;align-items:flex-start;transition:transform .45s var(--motion-ease),border-color .35s,background .35s}
 .music-price-card:hover{transform:translateY(-5px);border-color:rgba(240,68,50,.55);background:linear-gradient(145deg,#1b1514,#0b0b0b)}
 .music-price-no{font-size:9px;letter-spacing:.16em;color:var(--orange);margin-bottom:28px}
@@ -174,3 +174,5 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .music-playlist-link span{color:var(--orange)}
 @media(max-width:800px){.music-portfolio-head{display:block}.music-portfolio-head h2{margin-top:30px}.music-portfolio-head>p{margin-top:22px}}
 @media(max-width:520px){.music-portfolio{padding-top:90px;padding-bottom:95px}.music-playlist{aspect-ratio:16/10}}
+
+.music-price-complete{border-color:rgba(240,68,50,.55);background:radial-gradient(circle at 90% 0%,rgba(240,68,50,.13),transparent 42%),linear-gradient(145deg,#191312,#0b0b0b)}
