@@ -213,3 +213,13 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .original-track-card .music-track-copy>span{color:#ff8b62}
 @media(max-width:800px){.original-music{padding-top:85px;padding-bottom:90px}}
 @media(max-width:520px){.original-music{padding-top:72px;padding-bottom:78px}.original-track-grid{gap:10px}}
+
+/* Ofertas de desenvolvimento digital */
+.dev-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 18px}
+.dev-offer{display:flex;flex-direction:column;gap:7px;padding:15px 14px;border:1px solid var(--line);background:rgba(255,255,255,.025);min-width:0}
+.dev-offer>span{font-size:9px;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.dev-offer>strong{font-family:var(--display);font-size:clamp(19px,2.2vw,27px);line-height:1.1}
+.dev-offer>strong small{font-family:var(--font);font-size:11px;color:var(--muted);font-weight:500}
+.dev-offer>small{font-size:11px;line-height:1.5;color:var(--muted)}
+.dev-offer-featured{border-color:rgba(240,68,50,.5);background:linear-gradient(145deg,rgba(240,68,50,.12),rgba(255,122,54,.035))}
+@media(max-width:650px){.dev-offers{grid-template-columns:1fr}.dev-offer{padding:13px}}
