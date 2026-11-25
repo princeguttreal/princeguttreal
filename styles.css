@@ -247,3 +247,10 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 .dev-portfolio-note{margin-top:24px;color:var(--muted);font-size:11px;letter-spacing:.04em}
 @media(max-width:800px){.dev-portfolio-head{display:block}.dev-portfolio-head p{margin-top:20px}.dev-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.development-portfolio{padding-top:75px;padding-bottom:75px}.dev-project-grid{grid-template-columns:1fr}.dev-project-visual{min-height:190px}}
+
+/* Valores dos serviços recorrentes */
+.monthly-service-price{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:390px;margin:18px 0 12px;padding:13px 16px;border:1px solid rgba(240,68,50,.32);background:linear-gradient(100deg,rgba(240,68,50,.09),rgba(255,122,54,.025))}
+.monthly-service-price>span{font-size:9px;letter-spacing:.13em;font-weight:700;color:var(--muted)}
+.monthly-service-price>strong{font-family:var(--display);font-size:23px;white-space:nowrap}
+.monthly-service-price>strong small{font-family:var(--font);font-size:11px;font-weight:500;color:var(--muted)}
+@media(max-width:520px){.monthly-service-price{max-width:100%;padding:12px}}
