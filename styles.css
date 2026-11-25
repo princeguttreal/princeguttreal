@@ -141,3 +141,23 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 @media(prefers-reduced-motion:reduce){
  .instagram-card,.instagram-card-media img,.instagram-arrow,.instagram-profile-link{transition:none}
 }
+
+
+/* MUSIC PRODUCTION — service pricing */
+.music-production{padding-top:115px;padding-bottom:130px;background:#090909;border-top:1px solid var(--line)}
+.music-production-head{display:flex;justify-content:space-between;align-items:end;margin:42px 0 52px}
+.music-production-head h2{font:600 clamp(42px,6vw,76px)/.98 var(--display);letter-spacing:-.065em;margin:0}
+.music-production-head h2 em{font-style:normal;color:var(--red)}
+.music-production-head>p{max-width:310px;color:var(--muted);font-size:13px;line-height:1.8}
+.music-pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.music-price-card{min-height:310px;padding:27px;border:1px solid var(--line);background:linear-gradient(145deg,#151515,#0b0b0b);display:flex;flex-direction:column;align-items:flex-start;transition:transform .45s var(--motion-ease),border-color .35s,background .35s}
+.music-price-card:hover{transform:translateY(-5px);border-color:rgba(240,68,50,.55);background:linear-gradient(145deg,#1b1514,#0b0b0b)}
+.music-price-no{font-size:9px;letter-spacing:.16em;color:var(--orange);margin-bottom:28px}
+.music-price-card h3{font-size:23px;line-height:1.12;letter-spacing:-.045em;margin:0 0 12px}
+.music-price-card p{font-size:12px;line-height:1.75;color:#a9a49e;margin:0 0 24px}
+.music-price{font:600 34px var(--display);letter-spacing:-.055em;margin-top:auto;margin-bottom:20px;color:var(--text)}
+.music-price-card>a{width:100%;display:flex;justify-content:space-between;align-items:center;padding-top:15px;border-top:1px solid var(--line);font-size:9px;letter-spacing:.1em;font-weight:700;color:#d8d2cc}
+.music-price-card>a span{color:var(--orange);font-size:16px}
+.music-price-card>a:hover{color:var(--orange)}
+@media(max-width:800px){.music-production-head{display:block}.music-production-head h2{margin-top:30px}.music-production-head>p{margin-top:22px}.music-pricing-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.music-production{padding-top:90px;padding-bottom:95px}.music-pricing-grid{grid-template-columns:1fr}.music-price-card{min-height:275px;padding:23px}}
