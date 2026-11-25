@@ -90,3 +90,9 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}
 @keyframes audio-wave{0%{transform:scaleY(.22);opacity:.38}45%{transform:scaleY(1);opacity:.92}100%{transform:scaleY(.38);opacity:.58}}
 @media(max-width:800px){.sound-wave{left:4%;right:4%;top:55%;height:24%;opacity:.58}}
 @media(prefers-reduced-motion:reduce){.sound-wave i{animation:none;transform:scaleY(.55);opacity:.65}}
+
+.nav-linkedin{display:inline-flex;align-items:center;gap:6px;color:#d5d1cc}
+.nav-linkedin span{color:var(--orange);font-size:13px;transition:transform .25s ease}
+.nav-linkedin:hover{color:#fff}
+.nav-linkedin:hover span{transform:translate(2px,-2px)}
+@media(max-width:800px){.nav-linkedin{justify-content:center}}
