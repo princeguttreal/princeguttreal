@@ -61,3 +61,71 @@ if(instagramTrack){
     instagramTrack.scrollBy({left:direction*Math.max(260,instagramTrack.clientWidth*.82),behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   }));
 }
+
+
+// Premium interaction layer: scroll progress, pointer lighting and subtle hero response.
+(()=>{
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header=document.querySelector('.site-header');
+  const progress=document.createElement('div');
+  progress.className='scroll-progress';
+  progress.setAttribute('aria-hidden','true');
+  progress.innerHTML='<span></span>';
+  document.body.append(progress);
+  const progressBar=progress.firstElementChild;
+  let ticking=false;
+  const updateScroll=()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const amount=max>0?window.scrollY/max:0;
+    progressBar.style.transform='scaleX('+amount+')';
+    if(header)header.classList.toggle('is-scrolled',window.scrollY>24);
+    topButton.classList.toggle('is-visible',window.scrollY>560);
+    ticking=false;
+  };
+  const requestScrollUpdate=()=>{if(!ticking){requestAnimationFrame(updateScroll);ticking=true;}};
+  const topButton=document.createElement('button');
+  topButton.className='back-to-top';
+  topButton.type='button';
+  topButton.setAttribute('aria-label','Voltar ao topo');
+  topButton.textContent='↑';
+  document.body.append(topButton);
+  topButton.addEventListener('click',()=>window.scrollTo({top:0,behavior:reduced?'auto':'smooth'}));
+  window.addEventListener('scroll',requestScrollUpdate,{passive:true});
+  window.addEventListener('resize',requestScrollUpdate,{passive:true});
+  updateScroll();
+
+  if(!reduced){
+    const glowCards=document.querySelectorAll('.case-card,.equipment-grid>div,.music-price-card,.music-track-card,.dev-project-card,.instagram-card');
+    glowCards.forEach(card=>{
+      card.addEventListener('pointermove',event=>{
+        const rect=card.getBoundingClientRect();
+        card.style.setProperty('--pointer-x',(event.clientX-rect.left)+'px');
+        card.style.setProperty('--pointer-y',(event.clientY-rect.top)+'px');
+      },{passive:true});
+      card.addEventListener('pointerleave',()=>{
+        card.style.removeProperty('--pointer-x');
+        card.style.removeProperty('--pointer-y');
+      },{passive:true});
+    });
+    const hero=document.querySelector('.hero');
+    const art=document.querySelector('.hero-art');
+    if(hero&&art&&window.matchMedia('(pointer:fine)').matches){
+      let frame=0;
+      hero.addEventListener('pointermove',event=>{
+        if(frame)return;
+        frame=requestAnimationFrame(()=>{
+          const rect=hero.getBoundingClientRect();
+          const x=(event.clientX-rect.left)/rect.width-.5;
+          const y=(event.clientY-rect.top)/rect.height-.5;
+          art.style.marginLeft=(x*12)+'px';
+          art.style.marginTop=(y*10)+'px';
+          frame=0;
+        });
+      },{passive:true});
+      hero.addEventListener('pointerleave',()=>{
+        art.style.marginLeft='0';
+        art.style.marginTop='0';
+      },{passive:true});
+    }
+  }
+})();
