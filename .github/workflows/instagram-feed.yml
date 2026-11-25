@@ -1,0 +1,54 @@
+name: Atualizar feed do Instagram
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-feed-sync
+  cancel-in-progress: true
+
+jobs:
+  sync-instagram:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verificar conexão da Meta
+        env:
+          INSTAGRAM_ACCESS_TOKEN: \${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$INSTAGRAM_ACCESS_TOKEN" ]; then
+            echo "::warning::Configure o secret INSTAGRAM_ACCESS_TOKEN para ativar a sincronização."
+            exit 0
+          fi
+
+      - name: Buscar as cinco publicações mais recentes
+        if: \${{ secrets.INSTAGRAM_ACCESS_TOKEN != '' }}
+        env:
+          INSTAGRAM_ACCESS_TOKEN: \${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          IG_API_VERSION: v25.0
+        run: python scripts/sync_instagram.py
+
+      - name: Salvar feed atualizado no GitHub
+        if: \${{ secrets.INSTAGRAM_ACCESS_TOKEN != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add instagram-feed.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração no feed."
+          else
+            git commit -m "chore: atualizar feed do Instagram"
+            git push
+          fi
