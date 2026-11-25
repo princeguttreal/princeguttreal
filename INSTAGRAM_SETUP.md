@@ -45,4 +45,4 @@ Tokens de longa duração do Instagram têm prazo de validade. Renove o token an
 - A integração é somente de leitura: não publica nem altera nada na conta.
 - O feed é atualizado pelo GitHub Actions; pode haver atraso de até aproximadamente uma hora entre uma publicação e sua aparição no site.
 - A Meta pode limitar a disponibilidade de URLs de mídia; a automação atualiza as URLs em cada sincronização.
-- O workflow usa a versão v25.0 da API, configurável no arquivo .github/workflows/instagram-feed.yml.
+- O workflow usa a versão v27.0 da API, configurável no arquivo .github/workflows/instagram-feed.yml.
