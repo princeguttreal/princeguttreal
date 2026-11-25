@@ -10,7 +10,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 TOKEN = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "").strip()
-API_VERSION = os.environ.get("IG_API_VERSION", "v25.0").strip()
+API_VERSION = os.environ.get("IG_API_VERSION", "v27.0").strip()
 EXPECTED_USERNAME = "princeguttreal"
 OUTPUT = Path(__file__).resolve().parents[1] / "instagram-feed.json"
 BASE_URL = f"https://graph.instagram.com/{API_VERSION}"
