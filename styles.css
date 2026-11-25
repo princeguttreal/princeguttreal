@@ -421,3 +421,19 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
   .site-header{padding:0 6%}
   .brand{font-size:11px;letter-spacing:.1em}
 }
+
+
+/* CENTRALIZAÇÃO DO MENU SUPERIOR — desktop */
+@media (min-width: 1051px){
+  .site-header{position:fixed;justify-content:space-between}
+  .site-header > .nav{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    margin:0;
+    flex:0 0 auto;
+    width:max-content;
+    max-width:calc(100% - 360px);
+  }
+}
